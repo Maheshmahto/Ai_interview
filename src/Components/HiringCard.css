@@ -1,0 +1,173 @@
+.card,.benefit-card {
+  position: relative; /* Needed for absolute positioning */
+  width: 450px;
+  height: 330px;
+  padding: 20px;
+  border-radius: 5px;
+  /* background: white; */
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  text-align: center; 
+  /* margin: 10px 100px; */
+  margin-top: 20px;
+}
+.card:hover {
+  background: linear-gradient(105deg, #525BD8, #f531d1);
+  color: white;
+}
+
+
+
+
+.card:hover .description{
+  color: white;
+}
+.card:hover .btn1 {
+color:#6363f3 ;
+background-color:white; 
+}
+.benefit-card {
+  border-top: 3.5px solid #EF7298;
+  border-left: 3.5px solid #EF7298;
+  border-bottom: 3.5px solid #8D77FF;
+  border-right: 3.5px solid #8D77FF;
+  width: 470px;
+  height: 370px;
+}
+
+
+
+.icon {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  font-size: 35px;
+  /* color: green; */
+  /* background-color: #DBEAFE; */
+  padding: 15px 12px;
+  border-radius: 10px;
+}
+.iconB {
+  position: absolute;
+  top: 10px;
+  left: 30px;
+  font-size: 35px;
+  /* color: green; */
+  /* background-color: #DBEAFE; */
+  padding: 15px 14px;
+  border-radius: 50%;
+}
+
+
+
+.title {
+  margin-top: 80px; 
+  font-size: 25px;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  width: 300px;
+  text-align: start;
+}
+
+
+
+.description {
+  margin-top: 10px; 
+  font-size: 20px;
+  /* font-weight: bold; */
+  font-family: "Poppins", sans-serif;
+  width: 300px;
+  text-align: start;
+  color: #4B5563;
+  
+  
+  
+}
+.decB{
+  margin-top: 10px; 
+  font-size: 20px;
+  /* font-weight: bold; */
+  font-family: "Poppins", sans-serif;
+  width: 380px;
+  text-align: start;
+  color: #4B5563;
+  
+  
+  
+}
+.btn1 {
+  position: absolute;
+  top: 210px;
+  left: 30px;
+  background-color:white ;
+  color: #6363f3;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  /* transition: background-color 0.3s ease; */
+}
+
+
+@media screen and (max-width:600px){
+  .card,.benefit-card {
+      width: 300px;
+  }
+  .title {
+    margin-top: 80px; 
+    font-size: 20px;
+    font-weight: bold;
+    width: auto;
+    /* width: 300px; */
+    /* text-align: start; */
+  }
+  
+  
+  .description {
+    margin-top: 10px; 
+    font-size: 17px;
+    /* font-weight: bold; */
+    
+    width: 250px;
+    
+    
+    
+    
+  }
+  .btn1 {
+    position: absolute;
+    top: 210px;
+    left: 20px;
+    background-color: #6363f3;
+    color: white;
+    padding: 8px 15px;
+    
+    border: none;
+    border-radius: 5px;
+    /* color: red; */
+    cursor: pointer;
+    font-size: 1rem;
+    /* transition: background-color 0.3s ease; */
+  }
+
+}
+
+
+.smart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.smart h3{
+  font-size: 2rem;
+  font-weight: bold;
+}
+@media screen and (max-width:600px){
+  .smart h3{
+      font-size: 1.3rem;
+      
+    }
+    
+  
+}
