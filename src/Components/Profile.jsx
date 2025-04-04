@@ -440,20 +440,12 @@ const StudentProfile = () => {
               <form action="" onSubmit={handleSubmit}>
                 <div className="bg-white rounded-xl shadow-sm overflow-hidden p-1.5">
                   <div className="p-6 border-b">
-                    <div className="flex justify-between items-center profilenav">
-                      <div>
-                        <img src={logo} loading="lazy" alt="Logo" />
-                      </div>
+                    <div className="flex items-center profilenav ">
+                      <div className="flex items-center justify-between w-full p-4">
+                        {/* Left Side: Profile Icon */}
+                       
 
-                      <div className="flex items-center gap-4">
-                        {profile?.username ? (
-                          <div className="w-20 h-20 rounded-full bg-pink-400 flex items-center justify-center text-white text-3xl font-bold cursor-pointer " onClick={handleCancel}>
-                            {profile.username[0].toUpperCase()}
-                          </div>
-                        ) : (
-                          ""
-                        )}
-
+                        {/* Right Side: User Details */}
                         <div className="flex flex-col gap-2">
                           <h2 className="text-xl font-semibold">
                             Welcome {profile?.username}
@@ -467,12 +459,22 @@ const StudentProfile = () => {
                             </div>
                           </div>
                         </div>
+                        {profile?.username && (
+                          <div
+                            className="w-20 h-20 rounded-full bg-pink-400 flex items-center justify-center text-white text-3xl font-bold cursor-pointer"
+                            onClick={handleCancel}
+                          >
+                            {profile.username[0].toUpperCase()}
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
                   {showProfile && (
-                    <div >
-                      <StudentProfileSetting handleCancel={handleCancel}></StudentProfileSetting>
+                    <div>
+                      <StudentProfileSetting
+                        handleCancel={handleCancel}
+                      ></StudentProfileSetting>
                     </div>
                   )}
                   {submittedProfile ? (
@@ -540,7 +542,7 @@ const StudentProfile = () => {
                           </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-sm p-6 ">
+                        <div className="bg-white rounded-lg  p-6 ">
                           <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 perhead">
                             <Briefcase className="w-5 h-5" />
                             Current Employment
@@ -619,7 +621,7 @@ const StudentProfile = () => {
                           </div>
                         </div>
 
-                        <div className=" rounded-lg shadow-sm p-6 ">
+                        <div className=" rounded-lg  p-6 ">
                           <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 personaltitle perhead">
                             <GraduationCap className="w-5 h-5" />
                             Education
@@ -665,7 +667,7 @@ const StudentProfile = () => {
                           </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-sm p-6 ">
+                        <div className="bg-white rounded-lg  p-6 ">
                           <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 perhead">
                             <FolderGit2 className="w-5 h-5" />
                             Projects
@@ -707,50 +709,77 @@ const StudentProfile = () => {
                           </div>
                         </div>
 
-                        <div className="bg-white rounded-lg shadow-sm p-6">
-                          <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 perhead">
-                            <Award className="w-5 h-5" />
-                            Certifications
-                          </h2>
-                          <div className="space-y-6">
-                            {candidateData?.certifications?.map(
-                              (cert, index) => (
-                                <div
-                                  key={index}
-                                  className="p-4 border rounded-lg bg-gray-200 perinfo"
-                                >
-                                  <div className="grid grid-cols-2 gap-4">
-                                    <div>
-                                      <p className="text-sm font-semibold text-gray-600">
-                                        Certification Name
-                                      </p>
-                                      <p className="mt-1">
-                                        {cert.certification_name}
-                                      </p>
+                        {candidateData?.certifications?.length > 0 && (
+                          <div className="bg-white rounded-lg p-6 mb-6 ">
+                            <h2 className="text-xl font-semibold mb-4 flex items-center gap-2 text-gray-800">
+                              <Award className="w-5 h-5 text-blue-600" />
+                              Certifications
+                            </h2>
+                            <div className="space-y-4">
+                              {candidateData.certifications.map(
+                                (cert, index) => (
+                                  <div
+                                    key={`cert-${index}`}
+                                    className="p-4 border border-gray-200 rounded-lg bg-gray-50 hover:bg-gray-100 transition-colors duration-200"
+                                  >
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                      <div>
+                                        <p className="text-sm font-medium text-gray-500">
+                                          Certification Name
+                                        </p>
+                                        <p className="mt-1 font-medium text-gray-800">
+                                          {cert.certification_name ||
+                                            "Not specified"}
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <p className="text-sm font-medium text-gray-500">
+                                          Issued By
+                                        </p>
+                                        <p className="mt-1 text-gray-800">
+                                          {cert.issued_by || "Not specified"}
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <p className="text-sm font-medium text-gray-500">
+                                          {cert.expiry_date
+                                            ? "Issue Date"
+                                            : "Date"}
+                                        </p>
+                                        <p className="mt-1 text-gray-800">
+                                          {cert.issued_date || "Not specified"}
+                                          {cert.expiry_date && (
+                                            <span className="block text-xs text-gray-500">
+                                              Expires: {cert.expiry_date}
+                                            </span>
+                                          )}
+                                        </p>
+                                      </div>
                                     </div>
-                                    <div>
-                                      <p className="text-sm font-semibold text-gray-600">
-                                        Issued By
-                                      </p>
-                                      <p className="mt-1">{cert.issued_by}</p>
-                                    </div>
-                                    <div>
-                                      <p className="text-sm font-semibold text-gray-600">
-                                        Issue Date
-                                      </p>
-                                      <p className="mt-1">{cert.issued_date}</p>
-                                    </div>
+                                    {cert.certification_url && (
+                                      <div className="mt-3">
+                                        <a
+                                          href={cert.certification_url}
+                                          target="_blank"
+                                          rel="noopener noreferrer"
+                                          className="text-sm text-blue-600 hover:underline inline-flex items-center"
+                                        >
+                                          <ExternalLink className="w-4 h-4 mr-1" />
+                                          View Certificate
+                                        </a>
+                                      </div>
+                                    )}
                                   </div>
-                                </div>
-                              )
-                            )}
+                                )
+                              )}
+                            </div>
                           </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   ) : (
                     <>
-                      <div className="mx-auto bg-white  rounded-xl shadow-sm">
+                      <div className="mx-auto bg-white  ">
                         <div className="p-6 border-b bg-white rounded-lg  personaldiv">
                           <h3 className="text-xl font-semibold flex items-center gap-2 mb-6 text-gray-800 personaltitle">
                             Personal Details
@@ -1244,7 +1273,7 @@ const StudentProfile = () => {
                               </div>
                               <div className="w-[48%]">
                                 <label className="block text-lg font-medium text-gray-700 mb-2">
-                                  Year_of_passing*
+                                  Year of passing*
                                 </label>
                                 <input
                                   type="number"

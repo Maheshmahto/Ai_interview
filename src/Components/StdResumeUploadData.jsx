@@ -20,7 +20,7 @@ import { MdOutlineCancel } from "react-icons/md";
 const StdResumeUploadData = () => {
   const location = useLocation();
   const selectedResume = location.state?.resume;
-  
+
   // if (!selectedResume) {
   //   return <p className="text-center text-gray-500">Loading resume details...</p>;
   // }
@@ -59,6 +59,7 @@ const StdResumeUploadData = () => {
       // );
 
       setResume(response.data[0]);
+      handleCancel();
     } catch (error) {
       //   console.error("Error fetching resume details:", error);
       console.log(error);
@@ -90,14 +91,16 @@ const StdResumeUploadData = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Ensure a file is selected
-    if (!studenteData.upload_resumes) {
-      return Swal.fire({
-        title: "Please upload a resume file",
+    if (!studenteData.job_title || !studenteData.upload_resumes) {
+      Swal.fire({
+        title: "Please fill all required fields",
         icon: "warning",
       });
+      return; // Don't disable the button if fields aren't filled
     }
+    setIsDisabled(true);
+    // Ensure a file is selected
+   
 
     // Prepare form data for upload
     const formData = new FormData();
@@ -118,7 +121,7 @@ const StdResumeUploadData = () => {
 
       if (response.status === 200) {
         fetchResumeDetails();
-        setIsDisabled(false)
+        setIsDisabled(false);
         Swal.fire({
           title: "Your resume has been uploaded successfully!",
           icon: "success",
@@ -126,7 +129,7 @@ const StdResumeUploadData = () => {
       }
     } catch (error) {
       console.log(error);
-      setIsDisabled(false)
+      setIsDisabled(false);
 
       Swal.fire({
         title: "Failed to upload resume",
@@ -137,10 +140,8 @@ const StdResumeUploadData = () => {
   };
   const [isDisabled, setIsDisabled] = useState(false);
 
-  const handleClick = () => {
-    // do your logic here
-    console.log("Button clicked");
-    setIsDisabled(true); // disable button after click
+  const handleClick = (e) => {
+    // disable button after click only if validation passes
   };
   const [count, setCount] = useState(0);
   const [showProfile, setShowProfile] = useState(true);
@@ -196,8 +197,7 @@ const StdResumeUploadData = () => {
 
               <button
                 type="submit"
-                // onClick={{handleSubmit,handleClick}}
-                onClick={(e)=>{handleSubmit(e);handleClick(e);}}
+                // onClick={handleClick}
                 disabled={isDisabled}
                 className="w-full bg-green-400 m-2 text-white py-2 px-4 rounded-lg hover:bg-green-600 transition duration-200 cursor-pointer addmore"
               >
@@ -224,127 +224,131 @@ const StdResumeUploadData = () => {
               Upload Resume
             </button>
           </div>
-          {
-            resume? 
-           ( <div>
+          {resume ? (
             <div>
-              <div className="flex justify-between md2">
-                <div>
-                  <p className="font-bold  text-3xl">Resume Analysis Report</p>
+              <div>
+                <div className="flex justify-between md2">
+                  <div>
+                    <p className="font-bold  text-3xl">
+                      Resume Analysis Report
+                    </p>
+                  </div>
+                </div>
+                <table className="w-[80%]  table table-auto text-xl ">
+                  <tbody className="w-full">
+                    <tr className="grid grid-cols-2 gap-4">
+                      <td className="flex items-center gap-2">
+                        <IoPerson className="text-gray-500" />
+                        {resume?.result.candidate_info?.name || "N/A"}
+                      </td>
+                      <td className="flex items-center gap-2">
+                        <IoBagRemoveSharp className="text-gray-500" />
+                        {resume?.resume_analysis?.job_title || "N/A"}
+                      </td>
+                    </tr>
+                    <tr className="grid grid-cols-2 gap-4">
+                      <td className="flex items-center gap-2">
+                        <MdMailOutline className="text-gray-500" />
+                        {resume?.result.candidate_info?.email || "N/A"}
+                      </td>
+                      <td className="flex items-center gap-2">
+                        <GoClock className="text-gray-500" />
+                        {resume?.uploaded_at || "N/A"}
+                      </td>
+                    </tr>
+                    <tr className="grid grid-cols-2 gap-4">
+                      <td className="flex items-center gap-2">
+                        <FaPhoneAlt className="text-gray-500" />{" "}
+                        {resume?.result.candidate_info?.phone || "N/A"}
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="flex items-center justify-between gap-5  ">
+                <div className="flex data bg-[#EFF6FF]  items-center justify-between ">
+                  <div className=" text-2xl">
+                    <p>Overall Score</p>
+                    <p className="text-3xl font-bold text-[#2563EB]">
+                      {resume?.result.overall_score || "N/A"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex data bg-[#ECFDF5] items-center justify-between gap-5 ">
+                  <div className=" text-2xl">
+                    <p>Relevance</p>
+                    <p className="text-3xl font-bold text-[#059669]">
+                      {resume?.result.relevance || "N/A"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex data bg-[#FFFBEB] items-center justify-between gap-5 ">
+                  <div className=" text-2xl">
+                    <p>Skills Fit</p>
+                    <p className="text-3xl font-bold text-[#D97706]">
+                      {resume?.result.skills_fit || "N/A"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex data bg-[#F5F3FF] items-center justify-between gap-5">
+                  <div className=" text-2xl">
+                    <p>Cultural Fit</p>
+                    <p className="text-3xl font-bold text-[#7C3AED]">
+                      {resume?.result.cultural_fit || "N/A"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex data bg-[#F5F3FF] items-center justify-between gap-5">
+                  <div className=" text-2xl">
+                    <p>Experience Match</p>
+                    <p className="text-3xl font-bold text-[#7C3]">
+                      {resume?.result.experience_match || "N/A"}
+                    </p>
+                  </div>
                 </div>
               </div>
-              <table className="w-[80%]  table table-auto text-xl ">
-                <tbody className="w-full">
-                  <tr className="grid grid-cols-2 gap-4">
-                    <td className="flex items-center gap-2">
-                      <IoPerson className="text-gray-500" />
-                      {resume?.result.candidate_info?.name || "N/A"}
-                    </td>
-                    <td className="flex items-center gap-2">
-                      <IoBagRemoveSharp className="text-gray-500" />
-                      {resume?.resume_analysis?.job_title || "N/A"}
-                    </td>
-                  </tr>
-                  <tr className="grid grid-cols-2 gap-4">
-                    <td className="flex items-center gap-2">
-                      <MdMailOutline className="text-gray-500" />
-                      {resume?.result.candidate_info?.email || "N/A"}
-                    </td>
-                    <td className="flex items-center gap-2">
-                      <GoClock className="text-gray-500" />
-                      {resume?.uploaded_at || "N/A"}
-                    </td>
-                  </tr>
-                  <tr className="grid grid-cols-2 gap-4">
-                    <td className="flex items-center gap-2">
-                      <FaPhoneAlt className="text-gray-500" />{" "}
-                      {resume?.result.candidate_info?.phone || "N/A"}
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <div className="flex items-center justify-between gap-5  ">
-              <div className="flex data bg-[#EFF6FF]  items-center justify-between ">
-                <div className=" text-2xl">
-                  <p>Overall Score</p>
-                  <p className="text-3xl font-bold text-[#2563EB]">
-                    {resume?.result.overall_score || "N/A"}
-                  </p>
-                </div>
-              </div>
-              <div className="flex data bg-[#ECFDF5] items-center justify-between gap-5 ">
-                <div className=" text-2xl">
-                  <p>Relevance</p>
-                  <p className="text-3xl font-bold text-[#059669]">
-                    {resume?.result.relevance || "N/A"}
-                  </p>
-                </div>
-              </div>
-              <div className="flex data bg-[#FFFBEB] items-center justify-between gap-5 ">
-                <div className=" text-2xl">
-                  <p>Skills Fit</p>
-                  <p className="text-3xl font-bold text-[#D97706]">
-                    {resume?.result.skills_fit || "N/A"}
-                  </p>
-                </div>
-              </div>
-              <div className="flex data bg-[#F5F3FF] items-center justify-between gap-5">
-                <div className=" text-2xl">
-                  <p>Cultural Fit</p>
-                  <p className="text-3xl font-bold text-[#7C3AED]">
-                    {resume?.result.cultural_fit || "N/A"}
-                  </p>
-                </div>
-              </div>
-              <div className="flex data bg-[#F5F3FF] items-center justify-between gap-5">
-                <div className=" text-2xl">
-                  <p>Experience Match</p>
-                  <p className="text-3xl font-bold text-[#7C3]">
-                    {resume?.result.experience_match || "N/A"}
-                  </p>
-                </div>
-              </div>
-            </div>
 
-            <div className="bg-[#ECFDF5] strength rounded-lg">
-              <div className="strength1">
-                <p className="text-2xl font-medium">Strength</p>
+              <div className="bg-[#ECFDF5] strength rounded-lg">
+                <div className="strength1">
+                  <p className="text-2xl font-medium">Strength</p>
+                </div>
+                <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
+                  <p>{resume?.result.strengths || "N/A"}</p>
+                </div>
               </div>
-              <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
-                <p>{resume?.result.strengths || "N/A"}</p>
+              <div className="bg-[#FEF2F2] strength rounded-lg">
+                <div className="strength1">
+                  <p className="text-2xl font-medium">Weaknesses</p>
+                </div>
+                <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
+                  <p>{resume?.result.weaknesses || "N/A"}</p>
+                </div>
+              </div>
+              <div className="bg-[#EFF6FF] strength rounded-lg">
+                <div className="strength1">
+                  <p className="text-2xl font-medium">Recommendations</p>
+                </div>
+                <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
+                  <p>{resume?.result.recommendations || "N/A"}</p>
+                </div>
+              </div>
+              <div className="bg-[#FFFBEB] strength rounded-lg">
+                <div className="strength1">
+                  <p className="text-2xl font-medium">Missing Elements</p>
+                </div>
+                <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
+                  <p>{resume?.result.missing_elements || "N/A"}</p>
+                </div>
               </div>
             </div>
-            <div className="bg-[#FEF2F2] strength rounded-lg">
-              <div className="strength1">
-                <p className="text-2xl font-medium">Weaknesses</p>
-              </div>
-              <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
-                <p>{resume?.result.weaknesses || "N/A"}</p>
-              </div>
+          ) : (
+            <div className="flex justify-center items-center ">
+              <span className="text-red-500 text-3xl">
+                {" "}
+                please upload Resume
+              </span>
             </div>
-            <div className="bg-[#EFF6FF] strength rounded-lg">
-              <div className="strength1">
-                <p className="text-2xl font-medium">Recommendations</p>
-              </div>
-              <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
-                <p>{resume?.result.recommendations || "N/A"}</p>
-              </div>
-            </div>
-            <div className="bg-[#FFFBEB] strength rounded-lg">
-              <div className="strength1">
-                <p className="text-2xl font-medium">Missing Elements</p>
-              </div>
-              <div className="strginfo flex flex-col gap-3 text-lg text-gray-700">
-                <p>{resume?.result.missing_elements || "N/A"}</p>
-              </div>
-            </div>
-          </div>) :  ( <div className="flex justify-center items-center ">
-            <span className="text-red-500 text-3xl"> please upload Resume</span>
-          </div>)
-          }
-        
-         
+          )}
         </div>
       </div>
     </>

@@ -42,15 +42,18 @@ const ProfileCard = ({ onClose }) => {
 
       {/* Profile info */}
       <div className="profile-info">
-        <h3 className="username">{profile.username || 'User'}</h3>
         
         <div className="tags">
-          {profile.user_type && (
+        <h3 className="username">{profile.username || 'User'}</h3>
+          <div className="flex gap-2">
+          {/* {profile.user_type && (
             <span className="user-type">{profile.user_type}</span>
-          )}
-          {profile.company_name && (
+          )} */}
+          {/* {profile.company_name && (
             <span className="company">{profile.company_name}</span>
-          )}
+          )} */}
+          </div>
+          
         </div>
 
         <div className="details-grid">

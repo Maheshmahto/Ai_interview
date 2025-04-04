@@ -78,7 +78,7 @@ const StudentProfileSetting = ({handleCancel}) => {
         <button
         type='button'
           onClick={handleLogout}
-          className="w-full bg-red-500 m-2 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200 cursor-pointer addmore"
+          className="w-full bg-gradient-to-r from-yellow-500 to-red-500 m-2 text-white py-2 px-4 rounded-lg hover:bg-red-600 transition duration-200 cursor-pointer addmore"
         >
           Log out
         </button>

@@ -91,7 +91,7 @@
 }
 
 .sidebar-link:hover {
-  background: linear-gradient(to right, 
+  background: linear-gradient(to left, 
       #FF6B8B 0%, #D95AA5 20%, 
       #B66DC8 40%, #8A75E6 60%, 
       #4E88FF 100%
@@ -106,7 +106,7 @@
   height: 1.25rem;
 }
 
-.logout {
+.logoutSiderbar {
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -115,8 +115,9 @@
   padding: 0.75rem 1rem;
 }
 
-.logout:hover {
-  transform: scale(1.1);
+.logoutSiderbar:hover {
+  /* transform: scale(1.1); */
+  
 }
 .dashboard{
   margin-bottom: 8px;

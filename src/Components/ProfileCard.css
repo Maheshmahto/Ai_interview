@@ -56,7 +56,8 @@
   
   /* Profile info */
   .profile-info {
-    padding: 70px 20px 20px;
+    padding: 40px 20px ;
+    padding-bottom: 15px;
   }
   
   .username {
@@ -68,11 +69,14 @@
   
   .tags {
     display: flex;
+    justify-content: space-around;
     gap: 10px;
     margin-bottom: 20px;
   }
   
   .user-type {
+    display: flex;
+    align-items: center;
     background-color: #eff6ff;
     color: #3b82f6;
     padding: 4px 12px;
@@ -110,7 +114,9 @@
     font-size: 1.2rem;
   }
   
-  .email-icon { color: #3b82f6; }
+  .email-icon { 
+    color: #3b82f6; 
+  }
   .building-icon { color: #8b5cf6; }
   .phone-icon { color: #8b5cf6; }
   .industry-icon { color: #3b82f6; }
@@ -130,8 +136,8 @@
   /* Logout button */
   .logout-btn {
     width: 100%;
-    background: linear-gradient(to right, #f59e0b, #ef4444);
-    color: white;
+    /* background: red; */
+    color: red;
     padding: 10px;
     border-radius: 8px;
     display: flex;
@@ -146,10 +152,7 @@
     transition: all 0.2s;
   }
   
-  .logout-btn:hover {
-    background: linear-gradient(to right, #e67e22, #dc2626);
-    transform: translateY(-1px);
-  }
+ 
   
   .logout-icon {
     font-size: 1.1rem;

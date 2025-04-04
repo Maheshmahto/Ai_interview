@@ -34,6 +34,9 @@ const LoginProvider = ({ children }) => {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, log out',
+            customClass: {
+                icon: 'swal2-icon-custom'  // Custom class for the icon
+              },
         }).then((result) => {
             if (result.isConfirmed) {
                 dispatch({ type: 'LOGOUT' });

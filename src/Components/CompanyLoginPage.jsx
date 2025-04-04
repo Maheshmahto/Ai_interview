@@ -93,7 +93,7 @@ const CompanyLoginPage = () => {
 
                     onChange={(e) => handleChange("company_name", e.target.value)}
 
-                    className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg"
+                    className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 border-blue-500 focus:border-blue-500 focus:outline-none rounded-md placeholder-gray-500 placeholder:text-lg"
                     />
                 </div>
                 <div className='flex flex-col'>
@@ -107,7 +107,7 @@ const CompanyLoginPage = () => {
                     onChange={(e) => handleChange("contact_person_name", e.target.value)}
 
                     required
-                    className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg"
+                    className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 border-blue-500 focus:border-blue-500 focus:outline-none rounded-md placeholder-gray-500 placeholder:text-lg"
                   />
                 </div>
               </div>
@@ -124,7 +124,7 @@ const CompanyLoginPage = () => {
                       onChange={(e) => handleChange("business_email", e.target.value)}
                       placeholder="Enter Business email"
                       required
-                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg"
+                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 border-blue-500 focus:border-blue-500 focus:outline-none rounded-md placeholder-gray-500 placeholder:text-lg"
                     />
                   </div>
                   <div className='flex flex-col'>
@@ -139,7 +139,7 @@ const CompanyLoginPage = () => {
                       value={formData.phone_number}
                       onChange={(e) => handleChange("phone_number", e.target.value)}
                       required
-                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg"
+                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 border-blue-500 focus:border-blue-500 focus:outline-none rounded-md placeholder-gray-500 placeholder:text-lg"
                     />
                   </div>
                 </div>
@@ -156,7 +156,7 @@ const CompanyLoginPage = () => {
                       value={formData.company_website}
                       onChange={(e) => handleChange("company_website", e.target.value)}
                       required
-                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg"
+                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 border-blue-500 focus:border-blue-500 focus:outline-none rounded-md placeholder-gray-500 placeholder:text-lg"
                     />
                   </div>
                   <div className='flex flex-col'>
@@ -167,7 +167,7 @@ const CompanyLoginPage = () => {
                       required
                       value={formData.company_size}
                       onChange={(e) => handleChange("company_size", e.target.value)}
-                      class="shift-placeholder writeText w-[350px] h-[60px] p-2 border-2 border-gray-500 rounded-md text-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                      class="shift-placeholder writeText w-[350px] h-[60px] p-2 border-2  rounded-md text-lg  focus:ring-2 focus:ring-indigo-500 border-blue-500 focus:border-blue-500 focus:outline-none"
                     >
                       <option value="">Select Company Size</option>
                       <option value="1-10">1 - 10 employees</option>
@@ -191,7 +191,7 @@ const CompanyLoginPage = () => {
                       value={formData.Industry}
                       onChange={(e) => handleChange("Industry", e.target.value)}
                       required
-                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg"
+                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg border-blue-500 focus:border-blue-500 focus:outline-none "
                     />
                   </div>
                   <div className='flex items-center justify-between gap-12'>
@@ -205,7 +205,7 @@ const CompanyLoginPage = () => {
                       value={formData.company_location}
                       onChange={(e) => handleChange("company_location", e.target.value)}
                       required
-                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg"
+                      className="shift-placeholder writeText w-[350px] h-[60px] mt-1 p-2  border-2 border-black-500 rounded-md placeholder-gray-500 placeholder:text-lg border-blue-500 focus:border-blue-500 focus:outline-none"
                     />
                   </div>
                 
@@ -227,7 +227,7 @@ const CompanyLoginPage = () => {
                     required
                     value={formData.company_description}
                     onChange={(e) => handleChange("company_description", e.target.value)}
-                    className=" shift-placeholder writeText company-descp w-[750px] h-[120px] mt-1 p-2 border-2 border-black-500 rounded-md placeholder-gray-500 "
+                    className=" shift-placeholder writeText company-descp w-[750px] h-[120px] mt-1 p-2 border-2 border-black-500 rounded-md placeholder-gray-500 border-blue-500 focus:border-blue-500 focus:outline-none "
                   ></textarea>
                 </div>
 

@@ -155,7 +155,7 @@ const JobPosting = () => {
           getAllPublishJob();
         }
       } catch (e) {
-        // console.log(e);
+        console.log(e.response);
         Swal.fire({
           icon: "error",
           text: "Something went wrong. Please try again!",
@@ -225,7 +225,7 @@ const JobPosting = () => {
       Swal.fire({
         icon: "error",
         title: "Error",
-        text: "Failed to save the job posting.",
+        text: `${e?.response?.data?.detail}`,
       });
     }
   };
@@ -237,7 +237,7 @@ const JobPosting = () => {
   };
 
   const handleCopyLink = (id) => {
-    let jobLink = `${window.location.origin}/job_details/${id}`;
+    let jobLink = `${window.location.origin}/ai_hr/job_details/${id}`;
     navigator.clipboard
       .writeText(jobLink)
       .then(() => {
@@ -359,7 +359,10 @@ const JobPosting = () => {
         </div>
 
         {/* Search and create job button */}
-        <div className="flex items-center justify-between dash1 flex-wrap gap-4">
+       {
+        !showCreateForm && (
+          <>
+           <div className="flex items-center justify-between dash1 flex-wrap gap-4">
           <div className="flex items-center border border-gray-300 rounded-lg md:w-[50%] h-[45px] w-full p-2">
             <IoIosSearch className="text-gray-500 text-2xl font-extrabold jobsearchicon" />
             <input
@@ -379,6 +382,9 @@ const JobPosting = () => {
             </button>
           </div>
         </div>
+          </>
+        )
+       }
 
         {/* Main content area */}
         <div className="relative">

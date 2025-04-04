@@ -143,11 +143,16 @@ min-width: 21rem; /* Ensure minimum width */
 .sidebarlogout{
 margin-left: -10px;
 margin-right: 75px;
-margin-bottom: 20px;
+margin-bottom: 20px; 
 }
-
 .margintop1{
 margin-top: 80px;
 }
+.isCollapsed{
+ width: 100%;
+}
+/* .sidebarlogout :hover{
+  background: linear-gradient(to right, #e67e22, #dc2626);
 
+} */
 

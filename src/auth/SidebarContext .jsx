@@ -17,7 +17,6 @@ export const SidebarProvider = ({ children }) => {
   );
 };
 
-// Custom hook to use the sidebar context
 export const useSidebar = () => {
   return useContext(SidebarContext);
 };

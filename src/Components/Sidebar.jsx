@@ -37,7 +37,7 @@ const Sidebar = () => {
   return (
     <>
       <div
-        className={`sticky top-0 bottom-0 left-0 flex flex-col h-screen shadow transition-all duration-300 ${isCollapsed ? "w-20" : "w-84"}`}
+        className={`sticky top-0 bottom-0 left-0 flex flex-col h-screen shadow transition-all duration-300 ${isCollapsed ? "w-20" : "w-80"}`}
       >
         {/* Toggle Button */}
         <button
@@ -181,21 +181,17 @@ const Sidebar = () => {
             </nav>
           </div>
         </div>
-        {/* Logout Button - Now at bottom of sidebar */}
-          <div className={`sidebarlogout mt-auto mb-4 ${isCollapsed ? "mx-auto w-[1rem]" : "ml-4"}`}>
+
+          <div className={`sidebarlogout mt-auto mb-4 fexl ${isCollapsed ? " mx-auto w-[60%] " : "ml-4"}`}>
             <div
-              className="flex items-center gap-2 cursor-pointer text-xl bg-gradient-to-r from-yellow-500 to-red-500 hover:bg-red-600 border border-gray-300 rounded-lg w-full logout text-white"
+              className="flex  justify-center items-center gap-2 cursor-pointer text-xl    rounded-lg w-full text-red-500 logout  font-medium"
               onClick={handlelogut}
             
             >
-              <IoLogOutOutline size={24} />
+              <IoLogOutOutline size={24} className="font-medium" />
               {!isCollapsed &&
-               <span>Logout</span>}
-               {
-                isCollapsed &&
-                <IoLogOutOutline size={24} />
-
-               }
+               <span className="logoutText">Logout</span>}
+     
             </div>
           </div>
       </div>

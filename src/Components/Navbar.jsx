@@ -7,7 +7,7 @@ const Navbar = () => {
     <div className='nav'>
       <img src={logo} alt="logo" />
 
-      <NavLink to="/login"><button className='btndemo'>Book a Demo</button></NavLink>
+      <NavLink to="/companylogin"><button className='btndemo'>Book a Demo</button></NavLink>
     </div>
   )
 }

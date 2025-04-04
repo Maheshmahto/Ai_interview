@@ -11,6 +11,7 @@ import { GoGraph } from "react-icons/go";
 import { BsFillLightningChargeFill } from "react-icons/bs";
 import { FaCalendarCheck } from "react-icons/fa6";
 import { FaRocket } from "react-icons/fa";
+import { NavLink } from 'react-router-dom';
 
 const HCard = () => {
   return (
@@ -45,6 +46,7 @@ const HCard = () => {
       title={"Automated Interview Scheduling"}
       descr={"Streamline the interview coordination process with smart scheduling automation."}
       />
+  <NavLink to="/companylogin">
     <HiringCard
     icon={<FaRocket className='text-white'/>}
     bgColor="bg-[#6280E8]"
@@ -52,8 +54,15 @@ const HCard = () => {
     fourthCard="bg-[linear-gradient(105deg,_#525BD8,_#f531d1)]"
     title={"Ready to tranform?"}
     isButton={true}
-        buttonText={"Get Started"}
+              
+
+buttonText={"Get Started"}
+              
+    
+
+        
     />
+      </NavLink>
 
 
     </div>

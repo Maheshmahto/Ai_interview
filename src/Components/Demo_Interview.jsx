@@ -178,6 +178,9 @@ const Demo_Interview = ({
         setResumeFile(resume);
         fetchQuestionsAndStart(email);
       }
+      else if(result.dismiss === Swal.DismissReason.cancel){
+        navigate("/StudentProfile");
+      }
     });
   }, []);
 

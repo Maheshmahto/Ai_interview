@@ -10,6 +10,7 @@ import image2 from '../assets/Mask group (2).png';
 import image1 from '../assets/Mask group (1).png';
 import svg from '../assets/svg.png';
 import i3 from '../assets/i (3).png';
+import ScrollToTopButton from './ScrolltoTopBtn';
 // import video from '../assets/MAITRI_AI INTERVIEW.mp4';
 // import './Home.css'
 const Home = () => {
@@ -43,7 +44,7 @@ const Home = () => {
             </h1>
             <h2 className='text-3xl mt'>Transform recruitment with AI-driven automation, <br />
               smarter screening, and seamless hiring</h2>
-            <NavLink to="/loginPage"><button className="hero-btn">Get started</button></NavLink>
+            <NavLink to="/companylogin"><button className="hero-btn">Get started</button></NavLink>
           </div>
 
           <div className='w-[50%]'>
@@ -61,11 +62,11 @@ const Home = () => {
               <h1 className='shadow-2xl text-gray-900 text-lg font-semibold bg-white absolute top-140 right-165 rounded-2xl padding'>Ai-Powered<span className='flex text-gray-500 text-sm'>Smart Analysis</span><img src={svg} alt="" className='absolute top-8 left-3' /></h1>
             </div>
           </div>
-
+         
         </div>
       </div>
       <div className='hiring-process'>
-        <h1>Transform Your Hiring Process</h1>
+        <h1  className='transform'>Transform Your Hiring Process</h1>
         <p>Streamline recruitment with AI-powered tools designed for modern business</p>
       </div>
       <HCard />
@@ -88,7 +89,7 @@ const Home = () => {
               </iframe>
             </div>
       </div>
-
+      <ScrollToTopButton></ScrollToTopButton>
       <BCard />
       <Footer />
     </>

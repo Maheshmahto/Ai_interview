@@ -4,6 +4,8 @@ import { FileText, Video,LogOut } from "lucide-react";
 import './Profile.css';
 import { useLogin } from "../auth/LoginContext";
 import { NavLink } from "react-router-dom";
+import logo from "../assets/logo.png";
+
 const StudentSiderBar = ({handleCancel}) => {
     const { logout } = useLogin();
     const handleLogout = () => {
@@ -14,13 +16,14 @@ const StudentSiderBar = ({handleCancel}) => {
     <div className="sidebar-container">
       <div className="sidebar-inner">
         <div className="sidebar-header">
-        <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
+                                  <img src={logo} loading="lazy" alt="Logo" />
+          
+        {/* <h2 className="text-3xl font-bold text-gray-800 tracking-tight">
             Candidate
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-purple-600 dashboard">
               dashboard
             </span>
-          </h2  >
-          {/* <h2>mahesh</h2> */}
+          </h2  > */}
           <hr />
         </div>
         
@@ -45,13 +48,13 @@ const StudentSiderBar = ({handleCancel}) => {
                 <span>Interview Demo</span>
               </NavLink>
             </li>
-            <li className="sidebar-item">
+            <li className="sidebar-item bg-gradient-to-r from-yellow-500 to-red-500 border border-gray-300 rounded-lg w-full text-white flex justify-center">
               <Link onClick={handleLogout}
                 to="#"
-                className="logout"
+                className="logoutSiderbar"
               >
-                <LogOut className="sidebar-icon" />
-                <span>Logout</span>
+                <LogOut className="sidebar-icon" color="white" />
+                <span className="text-white">Logout</span>
               </Link>
             </li>
             

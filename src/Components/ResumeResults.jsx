@@ -9,14 +9,14 @@ const ResumeResults = ({ results }) => {
 
   return (
     <div className="mt-8 w-full mx-auto resumeresult">
-      <div className="flex justify-between items-center mb-6">
-        <h3 className="text-xl font-semibold">Resume Selection Results</h3>
+      <div className="flex justify-center items-center heading mb-6">
+        <h3 className="text-2xl font-semibold">Resume Selection Results</h3>
       </div>
 
       {results.map((result, index) => (
-        <div key={index} className="mb-4 rounded-lg overflow-hidden shadow-md">
+        <div key={index} className="mb-4  rounded-lg overflow-hidden shadow-md">
           {/* Main candidate info div */}
-          <div className="p-4 w-full">
+          <div className="p-4 w-full   pro1">
             <div className="flex flex-wrap justify-between items-center gap-2 w-full max-w-lg mx-auto">
               <div className="w-full md:w-[450px] p-4 border-1 rounded-lg flex flex-col gap-3 shadow-lg resultdiv">
                 <div>
@@ -53,7 +53,7 @@ const ResumeResults = ({ results }) => {
           {/* Details section with improved grid layout */}
           {active === index && (
             <div className="p-0 md:p-2 bg-white details-container">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mx-auto">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-3 mx-auto details-container2">
                 {/* Scoring section */}
                 <div className="w-full bg-white p-3 rounded-lg shadow-sm scoring border-1 weakness1">
                   <h5 className="font-semibold mb-3 text-blue-800 border-b pb-2">Scoring</h5>
@@ -102,19 +102,19 @@ const ResumeResults = ({ results }) => {
                 
                 {/* Questions section */}
                 {result.resume_selection_result?.questions?.generated_questions?.all_questions && (
-                  <div className="w-full bg-white p-3 rounded-lg shadow-sm border-1 weakness1">
+                  <div className="w-full bg-white p-3 rounded-lg shadow-sm border-1 weakness1 ">
                     <h5 className="font-semibold mb-3 text-blue-800 border-b pb-2">Suggested Interview Questions</h5>
-                    <ol className="list-decimal list-inside space-y-2 pl-1">
+                    <ol className="list-decimal list-inside space-y-2 pl-1 question">
                       {result.resume_selection_result.questions.generated_questions.all_questions.Qustion1 && 
-                        <li className="text-sm">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion1}</li>}
+                        <li className="text-sm questionlist">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion1}</li>}
                       {result.resume_selection_result.questions.generated_questions.all_questions.Qustion2 && 
-                        <li className="text-sm">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion2}</li>}
+                        <li className="text-sm questionlist">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion2}</li>}
                       {result.resume_selection_result.questions.generated_questions.all_questions.Qustion3 && 
-                        <li className="text-sm">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion3}</li>}
+                        <li className="text-sm questionlist">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion3}</li>}
                       {result.resume_selection_result.questions.generated_questions.all_questions.Qustion4 && 
-                        <li className="text-sm">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion4}</li>}
+                        <li className="text-sm questionlist">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion4}</li>}
                       {result.resume_selection_result.questions.generated_questions.all_questions.Qustion5 && 
-                        <li className="text-sm">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion5}</li>}
+                        <li className="text-sm questionlist">{result.resume_selection_result.questions.generated_questions.all_questions.Qustion5}</li>}
                     </ol>
                   </div>
                 )}
@@ -125,7 +125,7 @@ const ResumeResults = ({ results }) => {
                     <h5 className="font-semibold mb-2 text-green-700 border-b border-green-200 pb-2">Strengths</h5>
                     <ul className="list-disc list-inside space-y-1 text-sm">
                       {result.resume_selection_result.strengths.map((strength, idx) => (
-                        <li key={idx} className="text-gray-700">{strength}</li>
+                        <li key={idx} className="text-gray-700 questionlist">{strength}</li>
                       ))}
                     </ul>
                   </div>
@@ -137,7 +137,7 @@ const ResumeResults = ({ results }) => {
                     <h5 className="font-semibold mb-2 text-red-700 border-b border-red-200 pb-2">Weaknesses</h5>
                     <ul className="list-disc list-inside space-y-1 text-sm">
                       {result.resume_selection_result.weaknesses.map((weakness, idx) => (
-                        <li key={idx} className="text-gray-700">{weakness}</li>
+                        <li key={idx} className="text-gray-700 questionlist">{weakness}</li>
                       ))}
                     </ul>
                   </div>
@@ -149,7 +149,7 @@ const ResumeResults = ({ results }) => {
                     <h5 className="font-semibold mb-2 text-blue-700 border-b border-blue-200 pb-2">Recommendations</h5>
                     <ul className="list-disc list-inside space-y-1 text-sm">
                       {result.resume_selection_result.recommendations.map((recommendation, idx) => (
-                        <li key={idx} className="text-gray-700">{recommendation}</li>
+                        <li key={idx} className="text-gray-700 questionlist " >{recommendation}</li>
                       ))}
                     </ul>
                   </div>
@@ -161,7 +161,7 @@ const ResumeResults = ({ results }) => {
                     <h5 className="font-semibold mb-2 text-yellow-700 border-b border-yellow-200 pb-2">Missing Elements</h5>
                     <ul className="list-disc list-inside space-y-1 text-sm">
                       {result.resume_selection_result.missing_elements.map((missing, idx) => (
-                        <li key={idx} className="text-gray-700">{missing}</li>
+                        <li key={idx} className="text-gray-700 questionlist">{missing}</li>
                       ))}
                     </ul>
                   </div>
